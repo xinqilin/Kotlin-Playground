@@ -5,7 +5,7 @@ package collection
  */
 
 fun main() {
-
+    data class Fruit(val name: String, val sugar: Int)
     val fruits = listOf<Fruit>(
             Fruit("banana", 10),
             Fruit("apple", 1),
@@ -40,4 +40,3 @@ fun main() {
 
 }
 
-data class Fruit(val name: String, val sugar: Int)
