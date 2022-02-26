@@ -8,6 +8,27 @@ fun list() {
 
     list += 4
     list += listOf(5, 6)
+
+    // ======
+    val lst = listOf(19.2, 88.3, 22.1)
+    lst[1] eq 88.3  // Indexing
+    lst.reversed() eq listOf(22.1, 88.3, 19.2)
+    lst.sorted() eq listOf(19.2, 22.1, 88.3)
+    lst.sum() eq 129.6
+
+    // ===== joinToString
+    val list = listOf(1, 2, 3)
+    list.toString() eq "[1, 2, 3]"
+    list.joinToString() eq "1, 2, 3"
+    list.joinToString(
+        prefix = "(",
+        postfix = ")"
+    ) eq "(1, 2, 3)"
+    list.joinToString(separator = ":") eq
+            "1:2:3"
+    // separator, prefix, postfix
+    list.joinToString(". ", "", "!") eq
+            "1. 2. 3!"
 }
 
 fun set() {
