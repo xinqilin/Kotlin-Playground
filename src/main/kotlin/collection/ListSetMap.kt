@@ -11,24 +11,123 @@ fun list() {
 
     // ======
     val lst = listOf(19.2, 88.3, 22.1)
-    lst[1] eq 88.3  // Indexing
-    lst.reversed() eq listOf(22.1, 88.3, 19.2)
-    lst.sorted() eq listOf(19.2, 22.1, 88.3)
-    lst.sum() eq 129.6
+    lst[1]  // => 88.3  // Indexing
+    lst.reversed()  // => listOf(22.1, 88.3, 19.2)
+    lst.sorted()  // => listOf(19.2, 22.1, 88.3)
+    lst.sum()  // => 129.6
 
     // ===== joinToString
-    val list = listOf(1, 2, 3)
-    list.toString() eq "[1, 2, 3]"
-    list.joinToString() eq "1, 2, 3"
-    list.joinToString(
+    val list2 = listOf(1, 2, 3)
+    list2.toString()  // => "[1, 2, 3]"
+    list2.joinToString()  // => "1, 2, 3"
+    list2.joinToString(
         prefix = "(",
         postfix = ")"
-    ) eq "(1, 2, 3)"
-    list.joinToString(separator = ":") eq
+    )  // => "(1, 2, 3)"
+    list2.joinToString(separator = ":")  // =>
             "1:2:3"
     // separator, prefix, postfix
-    list.joinToString(". ", "", "!") eq
+    list2.joinToString(". ", "", "!")  // =>
             "1. 2. 3!"
+
+    val list3 = listOf('a', 'b', 'c')
+    list3.mapIndexed { index, element ->
+        "[$index: $element]"
+    }  // => listOf("[0: a]", "[1: b]", "[2: c]")
+
+    val list4 = listOf('a', 'b', 'c')
+    list4.indices.map {
+        "[$it]"
+    }  // => listOf("[0]", "[1]", "[2]")
+}
+
+fun advanceList(){
+    // The lambda argument is the element index:
+    val list1 = List(10) { it }
+    list1  // => "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+
+    // A list of a single value:
+    val list2 = List(10) { 0 }
+    list2  // => "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+
+    // A list of letters:
+    val list3 = List(10) { 'a' + it }
+    list3  // => "[a, b, c, d, e, f, g, h, i, j]"
+
+    // Cycle through a s // =>uence:
+    val list4 = List(10) { list3[it % 3] }
+    list4  // => "[a, b, c, a, b, c, a, b, c, a]"
+
+    // ============
+    val mutableList1 =
+        MutableList(5, { 10 * (it + 1) })
+    mutableList1  // => "[10, 20, 30, 40, 50]"
+    val mutableList2 =
+        MutableList(5) { 10 * (it + 1) }
+    mutableList2  // => "[10, 20, 30, 40, 50]"
+
+    //===========
+
+    val list = listOf(-3, -1, 5, 7, 10)
+
+    list.filter { it > 0 }  // => listOf(5, 7, 10)
+    list.count { it > 0 }  // => 3
+
+    list.find { it > 0 }  // => 5
+    list.firstOrNull { it > 0 }  // => 5
+    list.lastOrNull { it < 0 }  // => -1
+
+    list.any { it > 0 }  // => true
+    list.any { it != 0 }  // => true
+
+    list.all { it > 0 }  // => false
+    list.all { it != 0 }  // => true
+
+    list.none { it > 0 }  // => false
+    list.none { it == 0 }  // => true
+}
+
+fun advancePlusList(){
+    val list = listOf(-3, -1, 5, 7, 10)
+    val isPositive = { i: Int -> i > 0 }
+
+    list.filter(isPositive)  // => "[5, 7, 10]"
+    list.filterNot(isPositive)  // => "[-3, -1]"
+
+    val (pos, neg) = list.partition { it > 0 }
+    pos  // => "[5, 7, 10]"
+    neg  // => "[-3, -1]"
+}
+
+fun sortList(){
+    data class Product(
+        val description: String,
+        val price: Double
+    )
+
+    fun main() {
+        val products = listOf(
+            Product("bread", 2.0),
+            Product("wine", 5.0)
+        )
+        products.sumOf { it.price }  // => 7.0
+
+        products.sortedByDescending { it.price }  // =>
+                "[Product(description=wine, price=5.0)," +
+                " Product(description=bread, price=2.0)]"
+        products.minByOrNull { it.price }  // =>
+                Product("bread", 2.0)
+    }
+}
+
+fun takeOrDrop(){
+    val list = listOf('a', 'b', 'c', 'X', 'Z')
+    list.takeLast(3)  // => "[c, X, Z]"
+    list.takeLastWhile { it.isUpperCase() }  // =>
+            "[X, Z]"
+    list.drop(1)  // => "[b, c, X, Z]"
+    list.dropWhile { it.isLowerCase() }  // =>
+            "[X, Z]"
 }
 
 fun set() {
@@ -55,6 +154,15 @@ fun set() {
     mutableSet // =>  setOf(42)
     mutableSet -= 42
     mutableSet // => setOf<Int>()
+}
+
+fun advanceSet(){
+    val set = setOf("a", "ab", "ac")
+    set.maxByOrNull { it.length }?.length  // => 2
+    set.filter {
+        it.contains('b')
+    }  // => listOf("ab")
+    set.map { it.length }  // => listOf(1, 2, 2)
 }
 
 fun map() {
