@@ -5,7 +5,7 @@ import java.util.*
 /**
  * @author Bill.Lin on 2021/8/21
  */
-class ValidSudoku {
+class `ValidSudoku.kt` {
     fun isValidSudoku(board: Array<CharArray>): Boolean {
         val rowMap: MutableMap<Int, MutableSet<Int>> = HashMap()
         val colMap: MutableMap<Int, MutableSet<Int>> = HashMap()
