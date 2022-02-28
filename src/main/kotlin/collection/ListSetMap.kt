@@ -174,3 +174,19 @@ fun map() {
     m += 4 to "four"
     m // => mapOf(5 to "5ive", 4 to "four", 6 to "six")
 }
+
+fun zip(){
+    val left = listOf("a", "b", "c", "d")
+    val right = listOf("q", "r", "s", "t")
+
+    left.zip(right)  // => "[(a, q), (b, r), (c, s), (d, t)]"
+}
+
+fun flatten(){
+    val list = listOf(
+        listOf(1, 2),
+        listOf(4, 5),
+        listOf(7, 8),
+    )
+    list.flatten()  // => "[1, 2, 4, 5, 7, 8]"
+}

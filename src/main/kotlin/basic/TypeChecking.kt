@@ -47,14 +47,14 @@ fun main() {
         HouseFly(), Flea(), WaterStrider(),
         WaterBeetle(), WhirligigBeetle()
     )
-    insects.map { it.basic() } eq
+    insects.map { it.basic() }  // =>
             "[HouseFly: walk HouseFly: fly, " +
             "Flea: walk Flea: crawl, " +
             "WaterStrider: walk WaterStrider: fly, " +
             "WaterBeetle: walk WaterBeetle: fly, " +
             "WhirligigBeetle: walk " +
             "WhirligigBeetle: fly]"
-    insects.map { it.water() } eq
+    insects.map { it.water() }  // =>
             "[HouseFly: drown, Flea: drown, " +
             "WaterStrider: walk on water, " +
             "WaterBeetle: swim, " +
@@ -79,11 +79,7 @@ fun turn2(s: Shape) = when (s) {
 fun main() {
     val shapes =
         listOf(Circle(), Square(), Triangle())
-    shapes.map { it.draw() } eq
-            "[Circle: Draw, Square: Draw, " +
-            "Triangle: Draw]"
-    shapes.map { turn(it) } eq
-            "[, Square: Rotate, ]"
-    shapes.map { turn2(it) } eq
-            "[, Square: Rotate, Triangle: Rotate]"
+    shapes.map { it.draw() }  // => "[Circle: Draw, Square: Draw, Triangle: Draw]"
+    shapes.map { turn(it) }  // => "[, Square: Rotate, ]"
+    shapes.map { turn2(it) }  // => "[, Square: Rotate, Triangle: Rotate]"
 }
