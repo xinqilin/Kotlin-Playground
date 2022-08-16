@@ -23,3 +23,26 @@ suspend fun showContents() = coroutineScope {
 ### withContext(Dispatchers.Main) 將 showContents(content) 包起來。
   可以把 coroutine 想成是執行緒(thread)的概念，利用背景的執行緒來執行耗時動作，完成之後，在由主執行緒來繪製畫面。
   前方的 launch{} 可以看作是建立一個新的執行緒，到了 withContext(Dispatchers.Main) 把 context 切回 Dispatchers.Main 也就是主執行緒，在主執行緒上進行畫面的更新
+
+### 複習
+
+```kotlin
+    val c = s.toCharArray()
+    val arr = IntArray(26)
+    for (i in 0 until c.size - 1) {
+      if (map[c[i]]!! >= map[c[i + 1]]!!) {
+        ans += map[c[i]]!!
+      } else {
+        ans -= map[c[i]]!!
+      }
+    }
+
+    val map = HashMap<Char, Int>()
+    map['I'] = 1
+    map['V'] = 5
+    map['X'] = 10
+    map['L'] = 50
+    map['C'] = 100
+    map['D'] = 500
+    map['M'] = 1000
+```
