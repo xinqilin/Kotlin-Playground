@@ -82,3 +82,11 @@ map['M'] = 1000
     pq.addAll(map.entries)
 
 ```
+
+```kotlin
+// map
+    val map = HashMap<Int, Int>()
+    for (n in nums) {
+        map.compute(n) { k: Int?, v: Int? -> if (v == null) 1 else v + 1 }
+    }
+```
