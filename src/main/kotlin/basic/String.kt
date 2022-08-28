@@ -1,17 +1,15 @@
-import sun.util.locale.LocaleUtils.isEmpty
-
 fun main() {
     val s1: String? = null
     s1.isNullOrEmpty()  // => true
     s1.isNullOrBlank()  // => true
 
     val s2 = ""
-    s2.isNullOrEmpty()  // => true
-    s2.isNullOrBlank()  // => true
+    s2.isEmpty()  // => true
+    s2.isBlank()  // => true
 
     val s3: String = " \t\n"
-    s3.isNullOrEmpty()  // => false
-    s3.isNullOrBlank()  // => true
+    s3.isEmpty()  // => false
+    s3.isBlank()  // => true
 
 }
 

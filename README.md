@@ -39,27 +39,27 @@ coroutine ，而且它有一個回傳值 Job 。
 
 ```kotlin
     val c = s.toCharArray()
-val arr = IntArray(26)
-for (i in 0 until c.size - 1) {
-    if (map[c[i]]!! >= map[c[i + 1]]!!) {
-        ans += map[c[i]]!!
-    } else {
-        ans -= map[c[i]]!!
+    val arr = IntArray(26)
+    for (i in 0 until c.size - 1) {
+        if (map[c[i]]!! >= map[c[i + 1]]!!) {
+            ans += map[c[i]]!!
+        } else {
+            ans -= map[c[i]]!!
+        }
     }
-}
-
-val map = HashMap<Char, Int>()
-map['I'] = 1
-map['V'] = 5
-map['X'] = 10
-map['L'] = 50
-map['C'] = 100
-map['D'] = 500
-map['M'] = 1000
-
-```
+    
+    val map = HashMap<Char, Int>()
+    map['I'] = 1
+    map['V'] = 5
+    map['X'] = 10
+    map['L'] = 50
+    map['C'] = 100
+    map['D'] = 500
+    map['M'] = 1000
 
 ```
+
+```kotlin
     int n = arr.length;
     PriorityQueue<Map.Entry<Integer, Integer>>pq=new PriorityQueue<>((e1,e2)->(e2.getValue()-e1.getValue()));
     Map<Integer, Integer> map=new HashMap<>();
@@ -75,6 +75,9 @@ map['M'] = 1000
 ```kotlin
 
     val pq = PriorityQueue { (_, value): Map.Entry<Int?, Int>, (_, value1): Map.Entry<Int?, Int> -> value1 - value }
+    // pq compare
+    val queue: Queue<Int> = PriorityQueue { a: Int, b: Int -> b - a }
+    
     val map: MutableMap<Int?, Int> = HashMap()
     for (i in 0 until n) {
         map[arr.get(i)] = map.getOrDefault(arr.get(i), 0) + 1
@@ -89,4 +92,10 @@ map['M'] = 1000
     for (n in nums) {
         map.compute(n) { k: Int?, v: Int? -> if (v == null) 1 else v + 1 }
     }
+```
+
+```kotlin
+
+//    二維陣列
+    val ans = Array(row) { IntArray(col) }
 ```
